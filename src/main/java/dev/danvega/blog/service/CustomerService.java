@@ -1,4 +1,5 @@
 package dev.danvega.blog.service;
+/*
 import dev.danvega.blog.model.Customer;
 import dev.danvega.blog.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
@@ -44,4 +45,4 @@ public class CustomerService {
         existingCustomer.setEmail(customer.getEmail());
         customerRepository.save(existingCustomer);
     }
-}
+}*/
