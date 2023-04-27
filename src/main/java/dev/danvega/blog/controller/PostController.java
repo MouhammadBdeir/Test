@@ -1,17 +1,19 @@
 package dev.danvega.blog.controller;
 
+import dev.danvega.blog.model.Feedback;
 import dev.danvega.blog.model.Post;
 import dev.danvega.blog.model.dto.PostDetails;
 import dev.danvega.blog.repository.AuthorRepository;
 import dev.danvega.blog.repository.PostRepository;
+import dev.danvega.blog.service.CustomerService;
+import dev.danvega.blog.service.FeedbackService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/")
@@ -21,7 +23,10 @@ public class PostController {
 
     private final PostRepository posts;
     private final AuthorRepository authors;
-
+    @Autowired
+    private CustomerService customerService;
+    @Autowired
+    private FeedbackService feedbackService;
     public PostController(PostRepository postRepository, AuthorRepository authorRepository) {
         this.posts = postRepository;
         this.authors = authorRepository;
@@ -95,5 +100,16 @@ public class PostController {
     public String showTest(Model model) {
         System.out.println("showTest sucess");
         return "test";
+    }
+    @PostMapping("/feedback-form")
+    public String submitFeedbackForm(@ModelAttribute Feedback feedback, RedirectAttributes redirectAttributes) {
+        try {
+            feedbackService.saveFeedback(feedback);
+            redirectAttributes.addFlashAttribute("successMessage", "Your form has been successfully submitted!");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while submitting the form. Please try again later."+e.getMessage());
+        }
+
+        return "redirect:/index";
     }
 }
