@@ -11904,12 +11904,8 @@ nav li.nav-item-feedback:hover ul.submenu {
   padding-left: 29%;
 }
 /* Für Bildschirmbreiten kleiner als 768px */
-@media only screen and (max-width: 1667px) {
-  .navi{
-    margin-top:40px;
-  }
-}
-@media only screen and (max-width: 861px) {
+
+@media only screen and (max-width: 1310px) {
   /* Styles for screens smaller than 768px */
   .textH1{
     padding-top: 20%;

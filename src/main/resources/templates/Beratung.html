@@ -22,14 +22,14 @@
   }
 </style>
 <div th:replace="fragments/header.html::header"></div>
-<body style="margin-top:315px; ">
+<body style="margin-top:325px; background-image: url('/img/hinterground1.jpg');">
 <style>
   body {
     background-color: #BFBFBD; /* Replace with your desired color code */
   }
 </style>
 <div class="desktop-menu" th:replace="fragments/nav::nav"></div>
-<section class="pt-4" style="margin-top: 20px;">
+<section class="pt-4"  style="background-color:white; width: 70%;height: 100%; display: flex; justify-content:center;align-items: center;max-width: 60%;min-width: 300px; margin:0 auto;  border-radius: 5px;">
   <!-- Modal für das Feedback-Formular -->
   <div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="feedbackModalLabel" aria-hidden="true">
     <div class="modal-dialog " role="document">
@@ -57,18 +57,18 @@
       </div>
     </div>
   </div>
-  <div class="container px-lg-5" style="margin-top: 100px;">
+  <div class="container px-lg-5" style="margin-top: 40px;">
     <div class="row">
       <div class="col-8">
         <h3 class="text-dunkelGold" >Beratung </h3>
         <ul class="no-bullets">
-          <li>&#9733; APQP Beratung  </li>
-          <li>&#9733; Beratung zu CE Kennzeichnung, Reach, RoHS und ECE Typgenehmigung  </li>
-          <li>&#9733; Beratung zu Homologationsprozesse sowie COP gemäß ECE und SAE Norm 	Automotive  </li>
-          <li>&#9733; Beratung zu Lean Management  </li>
+          <li>&#9733; APQP Beratung </li>
+          <li>&#9733; Beratung zu CE Kennzeichnung, Reach, RoHS und ECE Typgenehmigung</li>
+          <li>&#9733; Beratung zu Homologationsprozesse sowie COP gemäß ECE und SAE Norm 	Automotive</li>
+          <li>&#9733; Beratung zu Lean Management </li>
         </ul>
       </div>
-      <div class="col-4"><img class="card-img-fade-in-left" style="height: 250px;width: 300px" src="/img/ITE-logo.jpeg" alt="..." /></div>
+      <div class="col-3"><img class="card-img-fade-in-left" style="height: 250px;width: 100%" src="/img/ITE-logo.jpeg" alt="..." /></div>
     </div>
   </div>
 </section >
@@ -78,6 +78,6 @@
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 </body >
-<div style="margin-top: 150px"></div>
+
 <div  th:replace="fragments/footer.html::footer"></div>
 </html>
