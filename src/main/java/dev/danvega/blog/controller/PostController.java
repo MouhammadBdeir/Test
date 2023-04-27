@@ -23,10 +23,7 @@ public class PostController {
 
     private final PostRepository posts;
     private final AuthorRepository authors;
-    @Autowired
-    private CustomerService customerService;
-    @Autowired
-    private FeedbackService feedbackService;
+
     public PostController(PostRepository postRepository, AuthorRepository authorRepository) {
         this.posts = postRepository;
         this.authors = authorRepository;
@@ -101,15 +98,5 @@ public class PostController {
         System.out.println("showTest sucess");
         return "test";
     }
-    @PostMapping("/feedback-form")
-    public String submitFeedbackForm(@ModelAttribute Feedback feedback, RedirectAttributes redirectAttributes) {
-        try {
-            feedbackService.saveFeedback(feedback);
-            redirectAttributes.addFlashAttribute("successMessage", "Your form has been successfully submitted!");
-        } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while submitting the form. Please try again later."+e.getMessage());
-        }
 
-        return "redirect:/index";
-    }
 }
