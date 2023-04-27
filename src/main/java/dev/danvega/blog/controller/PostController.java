@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/posts")
+@RequestMapping("/")
 public class PostController {
 
     private static final Logger LOG = LoggerFactory.getLogger(PostController.class);
@@ -24,22 +24,6 @@ public class PostController {
     public PostController(PostRepository postRepository, AuthorRepository authorRepository) {
         this.posts = postRepository;
         this.authors = authorRepository;
-    }
-
-    @GetMapping
-    public Iterable<Post> findAll() {
-        return posts.findAll();
-    }
-
-    @GetMapping("/{id}")
-    public Post findById(@PathVariable("id") Post post) {
-        return post;
-    }
-
-    @GetMapping("/{id}/details")
-    public PostDetails getPostDetails(@PathVariable("id") Post post) {
-        LOG.info("Post Details called for: " + post.getId());
-        return new PostDetails(post,authors.findById(post.getAuthor().getId()).get());
     }
     @GetMapping("/index")
     public String showForm(Model model) {
