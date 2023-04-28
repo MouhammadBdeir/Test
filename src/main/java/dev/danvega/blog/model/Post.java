@@ -1,4 +1,4 @@
-package dev.danvega.blog.model;
+/*package dev.danvega.blog.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -113,4 +113,4 @@ public final class Post {
                 ", updatedOn=" + updatedOn +
                 '}';
     }
-}
+}*/

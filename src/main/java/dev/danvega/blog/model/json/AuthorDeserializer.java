@@ -1,4 +1,4 @@
-package dev.danvega.blog.model.json;
+/*package dev.danvega.blog.model.json;
 
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
@@ -20,4 +20,4 @@ public class AuthorDeserializer extends JsonDeserializer<AggregateReference<Auth
         return AggregateReference.to(Integer.parseInt( treeNode.get("id").toString() ));
     }
 
-}
+}*/
