@@ -5,8 +5,6 @@ import dev.danvega.blog.model.Post;
 import dev.danvega.blog.model.dto.PostDetails;
 import dev.danvega.blog.repository.AuthorRepository;
 import dev.danvega.blog.repository.PostRepository;
-import dev.danvega.blog.service.CustomerService;
-import dev.danvega.blog.service.FeedbackService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
