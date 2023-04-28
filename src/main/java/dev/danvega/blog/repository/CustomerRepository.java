@@ -1,4 +1,4 @@
-package dev.danvega.blog.repository;
+/*package dev.danvega.blog.repository;
 
 
 import dev.danvega.blog.model.Customer;
@@ -9,4 +9,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
     // additional methods can be defined here
-}
+}*/
