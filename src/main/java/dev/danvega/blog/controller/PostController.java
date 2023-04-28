@@ -1,18 +1,31 @@
 package dev.danvega.blog.controller;
 
+import dev.danvega.blog.model.Post;
+import dev.danvega.blog.model.dto.PostDetails;
+import dev.danvega.blog.repository.AuthorRepository;
+import dev.danvega.blog.repository.PostRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @RequestMapping("/")
 public class PostController {
 
+    private static final Logger LOG = LoggerFactory.getLogger(PostController.class);
 
+    private final PostRepository posts;
+    private final AuthorRepository authors;
 
-
+    public PostController(PostRepository postRepository, AuthorRepository authorRepository) {
+        this.posts = postRepository;
+        this.authors = authorRepository;
+    }
     @GetMapping("/index")
     public String showForm(Model model) {
         System.out.println("showForm sucess ");
