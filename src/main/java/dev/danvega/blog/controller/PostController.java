@@ -100,9 +100,9 @@ public class PostController {
     }
     @GetMapping("/customer-list")
     public String showCustomerList(Model model) {
-        List<Customer> Customers = customerService.getAllCustomers();
+
         List<Feedback> Feedbacks = feedbackService.getAllFeedbacks();
-        model.addAttribute("customers", Customers);
+
         model.addAttribute("feedbacks", Feedbacks);
         System.out.println("showProjects sucess ");
         return "customer-list";
