@@ -131,14 +131,12 @@ public class PostController {
     @PostMapping("/feedback-form")
     public String submitFeedbackForm(@ModelAttribute Feedback feedback, RedirectAttributes redirectAttributes) {
         try {
-            feedbackService.saveFeedback(feedback);
+            Feedback savedFeedback = feedbackService.saveFeedback(feedback);
             redirectAttributes.addFlashAttribute("successMessage", "Your form has been successfully submitted!");
-            System.out.println("pushed");
+            System.out.println("pushed: " + savedFeedback.getId());
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while submitting the form. Please try again later."+e.getMessage());
-            System.out.println("not pushed" );
-            e.printStackTrace();
-            System.out.println("Exception: " + e.getMessage());
+            redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while submitting the form. Please try again later. " + e.getMessage());
+            System.out.println("not pushed");
         }
 
         return "redirect:/index";
