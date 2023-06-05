@@ -1,4 +1,4 @@
-/*package dev.danvega.blog.service;
+package dev.danvega.blog.service;
 
 import dev.danvega.blog.model.Customer;
 import dev.danvega.blog.repository.CustomerRepository;
@@ -13,10 +13,14 @@ import java.util.List;
 
 @Service
 public class CustomerService {
-    @Autowired
-    private CustomerRepository customerRepository;
 
-    public List<Customer> getAllCustomers() {
+    private CustomerRepository customerRepository;
+    @Autowired
+    public CustomerService(CustomerRepository customerRepository){
+        this.customerRepository = customerRepository;
+    }
+
+  /*  public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }
 
@@ -44,5 +48,5 @@ public class CustomerService {
         existingCustomer.setLastName(customer.getLastName());
         existingCustomer.setEmail(customer.getEmail());
         customerRepository.save(existingCustomer);
-    }
-}*/
+    }*/
+}
