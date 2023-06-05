@@ -10,40 +10,29 @@ import java.util.Optional;
 
 @Service
 public class FeedbackService {
-/*
-    private final FeedbackRepository feedbackRepository;
 
     @Autowired
-    public FeedbackService(FeedbackRepository feedbackRepository) {
-        this.feedbackRepository = feedbackRepository;
-    }
+    private FeedbackRepository feedbackRepository;
 
     public List<Feedback> getAllFeedbacks() {
-        return (List<Feedback>) feedbackRepository.findAll();
+        return feedbackRepository.findAll();
     }
-
     public Feedback saveFeedback(Feedback feedback) {
         return feedbackRepository.save(feedback);
     }
-
     public Feedback getFeedbackById(Long id) throws Exception {
-        Optional<Feedback> optionalFeedback = feedbackRepository.findById(id);
-        return optionalFeedback.orElseThrow(() -> new Exception("Feedback not found with id: " + id));
+        return feedbackRepository.findById(id).orElseThrow(() -> new Exception());
     }
-
+    public Feedback createFeedback(Feedback feedback) {
+        return feedbackRepository.save(feedback);
+    }
     public void deleteFeedback(Long id) {
         feedbackRepository.deleteById(id);
     }
-
     public void updateFeedback(Long id, Feedback feedback) throws Exception {
-        Feedback existingFeedback = feedbackRepository.findById(id)
-                .orElseThrow(() -> new Exception("Feedback not found with id: " + id));
-
-        existingFeedback.setMessage(feedback.getMessage());
-        existingFeedback.setSubject(feedback.getSubject());
-
-        feedbackRepository.save(existingFeedback);
+        Feedback feedback1 = feedbackRepository.findById(id)
+                .orElseThrow(() -> new Exception("Customer not found with id: " + id));
+        feedbackRepository.save(feedback1);
     }
 
- */
 }

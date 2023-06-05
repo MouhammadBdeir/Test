@@ -101,42 +101,32 @@ public class PostController {
         System.out.println("showProjects sucess ");
         return "customer-list";
     }
-    /*
+
     @PostMapping("/submit-form")
     public String submitContactForm(@ModelAttribute Customer customer, RedirectAttributes redirectAttributes) {
         try {
             customerService.saveCustomer(customer);
             redirectAttributes.addFlashAttribute("successMessage", "Your form has been successfully submitted!");
-            // create the email message
-           /* SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom("sender@example.com");
-            message.setTo("recipient@example.com");
-            message.setSubject("Form Data");
-            message.setText("Name: " + customer.getLastName() + "\nEmail: " + customer.getEmail() + "\nMessage: " + customer.getMessage());
-            // send the email
-            mailSender.send(message);
             System.out.println("pushed");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while submitting the form. Please try again later.");
-            System.out.println("not pushed" );
-            e.printStackTrace();
-            System.out.println("Exception: " + e.getMessage());
+            System.out.println("not pushed");
+            e.getMessage();
         }
-
         return "redirect:/index";
     }
     @PostMapping("/feedback-form")
     public String submitFeedbackForm(@ModelAttribute Feedback feedback, RedirectAttributes redirectAttributes) {
         try {
-            Feedback savedFeedback = feedbackService.saveFeedback(feedback);
+            feedbackService.saveFeedback(feedback);
             redirectAttributes.addFlashAttribute("successMessage", "Your form has been successfully submitted!");
-            System.out.println("pushed: " + savedFeedback.getId());
+            System.out.println("pushed");
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while submitting the form. Please try again later. " + e.getMessage());
+            redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while submitting the form. Please try again later."+e.getMessage());
             System.out.println("not pushed");
+            e.getMessage();
         }
 
         return "redirect:/index";
     }
-    */
 }
