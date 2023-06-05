@@ -29,7 +29,7 @@ create table IF NOT EXISTS Comment(
     foreign key (post) references Post(id)
 );
 -- Customer
-create table IF NOT EXISTS customer(
+create table IF NOT EXISTS customer (
     id serial primary key,
     firstName varchar(100) not null,
     lastName varchar(100) not null,
@@ -37,6 +37,6 @@ create table IF NOT EXISTS customer(
     company varchar(100) not null,
     anrede varchar(100) not null,
     email varchar(255) not null,
-    phoneNumber number not null,
+    phoneNumber varchar(20) not null,
     message text not null
     );
