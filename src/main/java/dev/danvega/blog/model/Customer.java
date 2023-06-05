@@ -2,52 +2,32 @@ package dev.danvega.blog.model;
 
 
 import javax.persistence.*;
-
 @Entity
 @Table(name = "customer")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(name = "firstName",nullable = false)
-    private String firstName= ""; // Set default value to empty string;
-    @Column(name = "lastName",nullable = false)
-    private String lastName = ""; // Set default value to empty string
-    @Column(nullable = false)
-    private String email = ""; // Set default value to empty string
-    @Column(nullable = false)
-    private String phoneNumber = ""; // Set default value to empty string
-    @Column(name = "message", length = 1000) // erhöht die maximale Länge des Felds auf 1000 Zeichen
+    private int id;
+    private String anrede;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String phoneNumber;
     private String message;
-    @Column(nullable = false)
-    private String interest = ""; // Set default value to empty string
-    @Column(nullable = false)
-    private String company = ""; // Set default value to empty string
-    @Column(nullable = false)
-    private String anrede = ""; // Set default value to empty string
+    private String interest;
+    private String company;
 
-
-    // Constructors
-    public Customer() {}
-
-    public Customer( String anrede,String firstName, String lastName, String email, String phoneNumber, String message, String interest, String company) {
-        this.anrede=anrede;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.message = message;
-        this.interest = interest;
-        this.company = company;
+    public Customer() {
+        // Default constructor
     }
 
-
     // Getters and Setters
-    public Long getId() {
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -73,6 +53,14 @@ public class Customer {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPhoneNumber() {
@@ -105,13 +93,5 @@ public class Customer {
 
     public void setCompany(String company) {
         this.company = company;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }
