@@ -1,24 +1,30 @@
 package dev.danvega.blog.service;
 
+import java.util.List;
 
 import dev.danvega.blog.model.Customer;
 import dev.danvega.blog.repository.CustomerRepository;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class CustomerService {
+
+    private final CustomerRepository customerRepository;
+
     @Autowired
-    private CustomerRepository customerRepository;
+    public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }
 
-    public Customer getCustomerById(Long id) throws Exception {
-        return customerRepository.findById(id).orElseThrow(() -> new Exception());
+    public Customer getCustomerById(Long id) throws NotFoundException {
+        return customerRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Customer not found with id: " + id));
     }
 
     public Customer createCustomer(Customer customer) {
@@ -26,20 +32,9 @@ public class CustomerService {
     }
 
 
+
     public void deleteCustomer(Long id) {
-        customerRepository.deleteById(id);
-    }
-    public void saveCustomer(Customer customer) {
-        customerRepository.save(customer);
-    }
-
-
-    public void updateCustomer(Long id, Customer customer) throws Exception {
-        Customer existingCustomer = customerRepository.findById(id)
-                .orElseThrow(() -> new Exception("Customer not found with id: " + id));
-        existingCustomer.setFirstName(customer.getFirstName());
-        existingCustomer.setLastName(customer.getLastName());
-        existingCustomer.setEmail(customer.getEmail());
-        customerRepository.save(existingCustomer);
+        Customer customer = customerRepository.getById(id);
+        customerRepository.delete(customer);
     }
 }
