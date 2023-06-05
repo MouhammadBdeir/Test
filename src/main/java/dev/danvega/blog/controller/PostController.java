@@ -128,10 +128,11 @@ public class PostController {
         try {
             feedbackService.saveFeedback(feedback);
             redirectAttributes.addFlashAttribute("successMessage", "Your form has been successfully submitted!");
+            System.out.println("pushed");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while submitting the form. Please try again later."+e.getMessage());
         }
-
+        System.out.println("pushed");
         return "redirect:/index";
     }
 }
