@@ -1,16 +1,16 @@
 
 -- Customer
 CREATE TABLE IF NOT EXISTS customer (
-    id serial primary key,
-    firstName varchar(100) not null,
-    lastName varchar(100) not null,
-    interest varchar(100) not null,
-    company varchar(100) not null,
-    anrede varchar(100) not null,
-    email varchar(255) not null,
-    phoneNumber varchar(20) not null,
-    message text not null
-    );
+      id SERIAL PRIMARY KEY,
+      anrede VARCHAR(255),
+      first_name VARCHAR(255),
+      last_name VARCHAR(255),
+      email VARCHAR(255),
+      phone_number VARCHAR(255),
+      message TEXT,
+      interest VARCHAR(255),
+      company VARCHAR(255)
+);
 CREATE TABLE IF NOT EXISTS feedback (
     id serial PRIMARY KEY ,
     message VARCHAR(1000),
