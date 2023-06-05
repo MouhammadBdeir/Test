@@ -1,32 +1,29 @@
 package dev.danvega.blog.model;
-
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Feedback")
+@Table(name = "feedback")
 public class Feedback {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
-    private Long id;
-    @Column(name = "message", length = 1000) // erhöht die maximale Länge des Felds auf 1000 Zeichen
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "message", length = 1000)
     private String message;
 
     @Column(nullable = false)
-    private String subject = ""; // Set default value to empty string
-    public Feedback(Long id, String message, String supject) {
-        this.id = id;
-        this.message = message;
-        this.subject = supject;
-    }
+    private String subject = "";
+
     public Feedback() {
     }
 
-    public Long getId() {
-        return id;
+    public Feedback(String message, String subject) {
+        this.message = message;
+        this.subject = subject;
     }
-    public void setId(Long id) {
-        this.id = id;
+
+    public int getId() {
+        return id;
     }
 
     public String getMessage() {
@@ -41,7 +38,7 @@ public class Feedback {
         this.message = message;
     }
 
-    public void setSubject(String supject) {
-        this.subject = supject;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 }

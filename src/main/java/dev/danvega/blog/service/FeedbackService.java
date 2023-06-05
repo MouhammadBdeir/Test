@@ -6,32 +6,49 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FeedbackService {
 
+    private final FeedbackRepository feedbackRepository;
+
     @Autowired
-    private FeedbackRepository feedbackRepository;
+    public FeedbackService(FeedbackRepository feedbackRepository) {
+        this.feedbackRepository = feedbackRepository;
+    }
 
     public List<Feedback> getAllFeedbacks() {
         return (List<Feedback>) feedbackRepository.findAll();
     }
+
     public Feedback saveFeedback(Feedback feedback) {
         return feedbackRepository.save(feedback);
     }
+
     public Feedback getFeedbackById(Long id) throws Exception {
-        return feedbackRepository.findById(Math.toIntExact(id)).orElseThrow(() -> new Exception());
+        Optional<Feedback> optionalFeedback = feedbackRepository.findById(Math.toIntExact(id));
+        if (optionalFeedback.isPresent()) {
+            return optionalFeedback.get();
+        } else {
+            throw new Exception("Feedback not found with id: " + id);
+        }
     }
-    public Feedback createFeedback(Feedback feedback) {
-        return feedbackRepository.save(feedback);
-    }
+
     public void deleteFeedback(Long id) {
         feedbackRepository.deleteById(Math.toIntExact(id));
     }
-    public void updateFeedback(Long id, Feedback feedback) throws Exception {
-        Feedback feedback1 = feedbackRepository.findById(Math.toIntExact(id))
-                .orElseThrow(() -> new Exception("Customer not found with id: " + id));
-        feedbackRepository.save(feedback1);
-    }
 
+    public void updateFeedback(Long id, Feedback feedback) throws Exception {
+        Optional<Feedback> optionalFeedback = feedbackRepository.findById(Math.toIntExact(id));
+        if (optionalFeedback.isPresent()) {
+            Feedback existingFeedback = optionalFeedback.get();
+            existingFeedback.setMessage(feedback.getMessage());
+            existingFeedback.setSubject(feedback.getSubject());
+            feedbackRepository.save(existingFeedback);
+        } else {
+            throw new Exception("Feedback not found with id: " + id);
+        }
+    }
 }
+

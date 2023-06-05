@@ -40,7 +40,7 @@ create table IF NOT EXISTS customer (
     phoneNumber varchar(20) not null,
     message text not null
     );
-CREATE TABLE IF NOT EXISTS Feedback (
+CREATE TABLE IF NOT EXISTS feedback (
     id serial PRIMARY KEY ,
     message VARCHAR(1000),
     subject VARCHAR(255) NOT NULL DEFAULT ''

@@ -9,6 +9,8 @@ import dev.danvega.blog.service.FeedbackService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,13 +24,17 @@ public class PostController {
 
     private final PostRepository posts;
     private final AuthorRepository authors;
+
+    private final  CustomerService customerService ;
+
+    private final FeedbackService feedbackService;
     @Autowired
-    private CustomerService customerService ;
-    @Autowired
-    private FeedbackService feedbackService;
-    public PostController(PostRepository postRepository, AuthorRepository authorRepository) {
+    public PostController(PostRepository postRepository, AuthorRepository authorRepository,FeedbackService feedbackService,CustomerService customerService) {
         this.posts = postRepository;
         this.authors = authorRepository;
+        this.customerService=customerService;
+        this.feedbackService=feedbackService;
+
     }
     @GetMapping("/index")
     public String showForm(Model model) {
@@ -128,17 +134,11 @@ public class PostController {
 
         return "redirect:/index";
     }
-    @PostMapping("/feedback-form")
-    public String submitFeedbackForm(@ModelAttribute Feedback feedback, RedirectAttributes redirectAttributes) {
-        try {
-            Feedback savedFeedback = feedbackService.saveFeedback(feedback);
-            redirectAttributes.addFlashAttribute("successMessage", "Your form has been successfully submitted!");
-            System.out.println("pushed: " + savedFeedback.getId());
-        } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while submitting the form. Please try again later. " + e.getMessage());
-            System.out.println("not pushed");
-        }
 
-        return "redirect:/index";
+    @PostMapping("/feedback-form")
+    public ResponseEntity<Feedback> createFeedback(@RequestBody Feedback feedback) {
+        Feedback createdFeedback = feedbackService.saveFeedback(feedback);
+        return new ResponseEntity<>(createdFeedback, HttpStatus.CREATED);
     }
+
 }
