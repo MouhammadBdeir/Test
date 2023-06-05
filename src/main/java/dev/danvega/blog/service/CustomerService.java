@@ -1,5 +1,5 @@
 package dev.danvega.blog.service;
-
+/*
 import dev.danvega.blog.model.Customer;
 import dev.danvega.blog.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-  /*  public List<Customer> getAllCustomers() {
+   public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }
 
@@ -48,5 +48,5 @@ public class CustomerService {
         existingCustomer.setLastName(customer.getLastName());
         existingCustomer.setEmail(customer.getEmail());
         customerRepository.save(existingCustomer);
-    }*/
-}
+    }
+}*/
