@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/")
 public class PostController {
@@ -98,8 +100,13 @@ public class PostController {
     }
     @GetMapping("/customer-list")
     public String showCustomerList(Model model) {
+        List<Customer> Customers = customerService.getAllCustomers();
+        List<Feedback> Feedbacks = feedbackService.getAllFeedbacks();
+        model.addAttribute("customers", Customers);
+        model.addAttribute("feedbacks", Feedbacks);
         System.out.println("showProjects sucess ");
         return "customer-list";
+
     }
 
     @PostMapping("/submit-form")
@@ -129,4 +136,5 @@ public class PostController {
 
         return "redirect:/index";
     }
+
 }
