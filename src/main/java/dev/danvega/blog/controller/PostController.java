@@ -9,8 +9,6 @@ import dev.danvega.blog.service.FeedbackService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -134,11 +132,17 @@ public class PostController {
 
         return "redirect:/index";
     }
-
     @PostMapping("/feedback-form")
-    public ResponseEntity<Feedback> createFeedback(@RequestBody Feedback feedback) {
-        Feedback createdFeedback = feedbackService.saveFeedback(feedback);
-        return new ResponseEntity<>(createdFeedback, HttpStatus.CREATED);
-    }
+    public String submitFeedbackForm(@ModelAttribute Feedback feedback, RedirectAttributes redirectAttributes) {
+        try {
+            Feedback savedFeedback = feedbackService.saveFeedback(feedback);
+            redirectAttributes.addFlashAttribute("successMessage", "Your form has been successfully submitted!");
+            System.out.println("pushed: " + savedFeedback.getId());
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while submitting the form. Please try again later. " + e.getMessage());
+            System.out.println("not pushed");
+        }
 
+        return "redirect:/index";
+    }
 }

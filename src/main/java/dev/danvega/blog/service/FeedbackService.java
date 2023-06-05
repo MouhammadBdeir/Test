@@ -27,28 +27,21 @@ public class FeedbackService {
     }
 
     public Feedback getFeedbackById(Long id) throws Exception {
-        Optional<Feedback> optionalFeedback = feedbackRepository.findById(Math.toIntExact(id));
-        if (optionalFeedback.isPresent()) {
-            return optionalFeedback.get();
-        } else {
-            throw new Exception("Feedback not found with id: " + id);
-        }
+        Optional<Feedback> optionalFeedback = feedbackRepository.findById(id);
+        return optionalFeedback.orElseThrow(() -> new Exception("Feedback not found with id: " + id));
     }
 
     public void deleteFeedback(Long id) {
-        feedbackRepository.deleteById(Math.toIntExact(id));
+        feedbackRepository.deleteById(id);
     }
 
     public void updateFeedback(Long id, Feedback feedback) throws Exception {
-        Optional<Feedback> optionalFeedback = feedbackRepository.findById(Math.toIntExact(id));
-        if (optionalFeedback.isPresent()) {
-            Feedback existingFeedback = optionalFeedback.get();
-            existingFeedback.setMessage(feedback.getMessage());
-            existingFeedback.setSubject(feedback.getSubject());
-            feedbackRepository.save(existingFeedback);
-        } else {
-            throw new Exception("Feedback not found with id: " + id);
-        }
+        Feedback existingFeedback = feedbackRepository.findById(id)
+                .orElseThrow(() -> new Exception("Feedback not found with id: " + id));
+
+        existingFeedback.setMessage(feedback.getMessage());
+        existingFeedback.setSubject(feedback.getSubject());
+
+        feedbackRepository.save(existingFeedback);
     }
 }
-
