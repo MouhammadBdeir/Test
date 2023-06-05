@@ -41,7 +41,7 @@ create table IF NOT EXISTS customer (
     message text not null
     );
 CREATE TABLE Feedback (
-    id serial PRIMARY KEY AUTO_INCREMENT,
+    id serial PRIMARY KEY ,
     message VARCHAR(1000),
     subject VARCHAR(255) NOT NULL DEFAULT ''
 );
