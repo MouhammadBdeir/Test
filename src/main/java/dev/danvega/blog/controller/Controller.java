@@ -98,14 +98,14 @@ public class Controller {
     @GetMapping("/customer-list")
     public String showCustomerList(Model model) {
 
-        List<Feedback> Feedbacks = feedbackService.getAllFeedbacks();
-
-        model.addAttribute("feedbacks", Feedbacks);
+        List<Feedback> feedbacks = feedbackService.getAllFeedbacks();
+        List<Customer> custumers = customerService.getAllCustomers();
+        model.addAttribute("feedbacks", feedbacks);
+        model.addAttribute("custumers", custumers);
         System.out.println("showProjects sucess ");
         return "customer-list";
 
     }
-
     @PostMapping("/submit-form")
     public String submitContactForm(@ModelAttribute Customer customer, RedirectAttributes redirectAttributes) {
         try {
@@ -114,7 +114,7 @@ public class Controller {
             System.out.println("pushed");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while submitting the form. Please try again later.");
-            System.out.println("pushed field");
+            System.out.println("not pushed");
             e.getMessage();
         }
         return "redirect:/index";
@@ -130,7 +130,6 @@ public class Controller {
             System.out.println("not pushed");
             e.getMessage();
         }
-
         return "redirect:/index";
     }
 
