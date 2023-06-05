@@ -1,6 +1,6 @@
 
 -- Customer
-create table IF NOT EXISTS customer (
+CREATE TABLE IF NOT EXISTS customer (
     id serial primary key,
     firstName varchar(100) not null,
     lastName varchar(100) not null,
