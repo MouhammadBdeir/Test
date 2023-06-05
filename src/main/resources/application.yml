@@ -17,3 +17,5 @@ info:
 spring:
   profiles:
     active: dev
+  main:
+    allow-circular-references: true
