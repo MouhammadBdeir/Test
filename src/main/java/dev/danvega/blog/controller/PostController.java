@@ -112,7 +112,7 @@ public class PostController {
     @PostMapping("/submit-form")
     public String submitContactForm(@ModelAttribute Customer customer, RedirectAttributes redirectAttributes) {
         try {
-            customerService.saveCustomer(customer);
+            customerService.createCustomer(customer);
             redirectAttributes.addFlashAttribute("successMessage", "Your form has been successfully submitted!");
             System.out.println("pushed");
         } catch (Exception e) {
