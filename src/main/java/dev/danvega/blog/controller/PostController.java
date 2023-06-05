@@ -1,17 +1,16 @@
 package dev.danvega.blog.controller;
 
-import dev.danvega.blog.model.Post;
-import dev.danvega.blog.model.dto.PostDetails;
+import dev.danvega.blog.model.Customer;
 import dev.danvega.blog.repository.AuthorRepository;
 import dev.danvega.blog.repository.PostRepository;
+import dev.danvega.blog.service.CustomerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/")
@@ -21,6 +20,8 @@ public class PostController {
 
     private final PostRepository posts;
     private final AuthorRepository authors;
+    @Autowired
+    private CustomerService customerService ;
 
     public PostController(PostRepository postRepository, AuthorRepository authorRepository) {
         this.posts = postRepository;
@@ -95,5 +96,23 @@ public class PostController {
     public String showTest(Model model) {
         System.out.println("showTest sucess");
         return "test";
+    }
+    @PostMapping("/submit-form")
+    public String submitContactForm(@ModelAttribute Customer customer, RedirectAttributes redirectAttributes) {
+        try {
+            customerService.saveCustomer(customer);
+            redirectAttributes.addFlashAttribute("successMessage", "Your form has been successfully submitted!");
+            // create the email message
+           /* SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom("sender@example.com");
+            message.setTo("recipient@example.com");
+            message.setSubject("Form Data");
+            message.setText("Name: " + customer.getLastName() + "\nEmail: " + customer.getEmail() + "\nMessage: " + customer.getMessage());
+            // send the email
+            mailSender.send(message);*/
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while submitting the form. Please try again later.");
+        }
+        return "redirect:/index";
     }
 }
