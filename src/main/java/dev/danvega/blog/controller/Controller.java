@@ -4,26 +4,23 @@ import dev.danvega.blog.model.Customer;
 import dev.danvega.blog.model.Feedback;
 import dev.danvega.blog.service.CustomerService;
 import dev.danvega.blog.service.FeedbackService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
-@Controller
+@org.springframework.stereotype.Controller
 @RequestMapping("/")
-public class PostController {
+public class Controller {
 
 
     private final  CustomerService customerService ;
 
     private final FeedbackService feedbackService;
     @Autowired
-    public PostController(FeedbackService feedbackService,CustomerService customerService) {
+    public Controller(FeedbackService feedbackService, CustomerService customerService) {
         this.customerService=customerService;
         this.feedbackService=feedbackService;
 

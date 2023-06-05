@@ -4,13 +4,14 @@ package dev.danvega.blog.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "customer")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+    @Column(name = "firstName",nullable = false)
     private String firstName= ""; // Set default value to empty string;
-    @Column(nullable = false)
+    @Column(name = "lastName",nullable = false)
     private String lastName = ""; // Set default value to empty string
     @Column(nullable = false)
     private String email = ""; // Set default value to empty string
