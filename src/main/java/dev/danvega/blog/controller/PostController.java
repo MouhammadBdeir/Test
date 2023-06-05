@@ -118,9 +118,11 @@ public class PostController {
             message.setText("Name: " + customer.getLastName() + "\nEmail: " + customer.getEmail() + "\nMessage: " + customer.getMessage());
             // send the email
             mailSender.send(message);*/
+            System.out.println("pushed");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while submitting the form. Please try again later.");
         }
+        System.out.println("not pushed");
         return "redirect:/index";
     }
     @PostMapping("/feedback-form")
@@ -132,7 +134,7 @@ public class PostController {
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while submitting the form. Please try again later."+e.getMessage());
         }
-        System.out.println("pushed");
+        System.out.println("not pushed");
         return "redirect:/index";
     }
 }
