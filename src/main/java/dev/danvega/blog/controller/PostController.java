@@ -2,8 +2,6 @@ package dev.danvega.blog.controller;
 
 import dev.danvega.blog.model.Customer;
 import dev.danvega.blog.model.Feedback;
-import dev.danvega.blog.repository.AuthorRepository;
-import dev.danvega.blog.repository.PostRepository;
 import dev.danvega.blog.service.CustomerService;
 import dev.danvega.blog.service.FeedbackService;
 import org.slf4j.Logger;
@@ -18,18 +16,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/")
 public class PostController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(PostController.class);
-
-    private final PostRepository posts;
-    private final AuthorRepository authors;
 
     private final  CustomerService customerService ;
 
     private final FeedbackService feedbackService;
     @Autowired
-    public PostController(PostRepository postRepository, AuthorRepository authorRepository,FeedbackService feedbackService,CustomerService customerService) {
-        this.posts = postRepository;
-        this.authors = authorRepository;
+    public PostController(FeedbackService feedbackService,CustomerService customerService) {
         this.customerService=customerService;
         this.feedbackService=feedbackService;
 
@@ -109,6 +101,7 @@ public class PostController {
         System.out.println("showProjects sucess ");
         return "customer-list";
     }
+    /*
     @PostMapping("/submit-form")
     public String submitContactForm(@ModelAttribute Customer customer, RedirectAttributes redirectAttributes) {
         try {
@@ -121,7 +114,7 @@ public class PostController {
             message.setSubject("Form Data");
             message.setText("Name: " + customer.getLastName() + "\nEmail: " + customer.getEmail() + "\nMessage: " + customer.getMessage());
             // send the email
-            mailSender.send(message);*/
+            mailSender.send(message);
             System.out.println("pushed");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while submitting the form. Please try again later.");
@@ -145,4 +138,5 @@ public class PostController {
 
         return "redirect:/index";
     }
+    */
 }

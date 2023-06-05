@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 public class FeedbackService {
-
+/*
     private final FeedbackRepository feedbackRepository;
 
     @Autowired
@@ -44,4 +44,6 @@ public class FeedbackService {
 
         feedbackRepository.save(existingFeedback);
     }
+
+ */
 }

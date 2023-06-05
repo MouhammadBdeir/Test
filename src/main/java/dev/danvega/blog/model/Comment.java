@@ -1,5 +1,5 @@
 package dev.danvega.blog.model;
-
+/*
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.data.annotation.PersistenceCreator;
 import org.springframework.data.annotation.Transient;
@@ -72,3 +72,4 @@ public final class Comment {
                 '}';
     }
 }
+*/

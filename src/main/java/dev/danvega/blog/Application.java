@@ -1,10 +1,6 @@
 package dev.danvega.blog;
 
-import dev.danvega.blog.model.Author;
-import dev.danvega.blog.model.Comment;
-import dev.danvega.blog.model.Post;
-import dev.danvega.blog.repository.AuthorRepository;
-import dev.danvega.blog.repository.PostRepository;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,7 +14,7 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-
+/*
 	@Profile({"dev","prod"})
 	@Bean
 	CommandLineRunner run(PostRepository postRepository, AuthorRepository authorRepository) {
@@ -31,4 +27,5 @@ public class Application {
 			postRepository.save(post);
 		};
 	}
+	*/
 }

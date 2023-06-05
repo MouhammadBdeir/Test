@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class CustomerService {
-
+/*
     private CustomerRepository customerRepository;
 
     @Autowired
@@ -46,4 +46,6 @@ public class CustomerService {
         existingCustomer.setEmail(customer.getEmail());
         customerRepository.save(existingCustomer);
     }
+
+ */
 }
