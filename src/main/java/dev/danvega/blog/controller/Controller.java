@@ -114,7 +114,7 @@ public class Controller {
             System.out.println("pushed");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while submitting the form. Please try again later.");
-            System.out.println("not pushed");
+            System.out.println("pushed field");
             e.getMessage();
         }
         return "redirect:/index";
