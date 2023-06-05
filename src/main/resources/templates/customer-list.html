@@ -46,11 +46,38 @@
 <body>
 <div class="container-fluid">
   <h1>Customer List</h1>
-  <div class="password-form">
-    <input type="password" class="password-input" placeholder="Enter password" id="passwordInput">
-    <button class="password-btn btn btn-primary">Submit</button>
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Anrede</th>
+          <th>Company</th>
+          <th>Interest</th>
+          <th>Message</th>
+          <th>Phone Number</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer : ${customers}">
+          <td th:text="${customer.id}"></td>
+          <td th:text="${customer.email}"></td>
+          <td th:text="${customer.firstName}"></td>
+          <td th:text="${customer.lastName}"></td>
+          <td th:text="${customer.anrede}"></td>
+          <td th:text="${customer.company}"></td>
+          <td th:text="${customer.interest}"></td>
+          <td th:text="${customer.message}"></td>
+          <td th:text="${customer.phoneNumber}"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-
 
   <h1>Feedback List</h1>
   <div class="row">
@@ -74,9 +101,7 @@
     </div>
   </div>
 </div>
-<script src="/js/Admin_script.js"></script>
 </body>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </html>
 
