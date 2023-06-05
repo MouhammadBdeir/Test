@@ -40,3 +40,8 @@ create table IF NOT EXISTS customer (
     phoneNumber varchar(20) not null,
     message text not null
     );
+CREATE TABLE Feedback (
+    id serial PRIMARY KEY AUTO_INCREMENT,
+    message VARCHAR(1000),
+    subject VARCHAR(255) NOT NULL DEFAULT ''
+);

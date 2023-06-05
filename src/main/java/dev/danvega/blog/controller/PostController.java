@@ -1,9 +1,11 @@
 package dev.danvega.blog.controller;
 
 import dev.danvega.blog.model.Customer;
+import dev.danvega.blog.model.Feedback;
 import dev.danvega.blog.repository.AuthorRepository;
 import dev.danvega.blog.repository.PostRepository;
 import dev.danvega.blog.service.CustomerService;
+import dev.danvega.blog.service.FeedbackService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,8 @@ public class PostController {
     private final AuthorRepository authors;
     @Autowired
     private CustomerService customerService ;
-
+    @Autowired
+    private FeedbackService feedbackService;
     public PostController(PostRepository postRepository, AuthorRepository authorRepository) {
         this.posts = postRepository;
         this.authors = authorRepository;
@@ -97,6 +100,11 @@ public class PostController {
         System.out.println("showTest sucess");
         return "test";
     }
+    @GetMapping("/customer-list")
+    public String showCustomerList(Model model) {
+        System.out.println("showProjects sucess ");
+        return "customer-list";
+    }
     @PostMapping("/submit-form")
     public String submitContactForm(@ModelAttribute Customer customer, RedirectAttributes redirectAttributes) {
         try {
@@ -113,6 +121,17 @@ public class PostController {
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while submitting the form. Please try again later.");
         }
+        return "redirect:/index";
+    }
+    @PostMapping("/feedback-form")
+    public String submitFeedbackForm(@ModelAttribute Feedback feedback, RedirectAttributes redirectAttributes) {
+        try {
+            feedbackService.saveFeedback(feedback);
+            redirectAttributes.addFlashAttribute("successMessage", "Your form has been successfully submitted!");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while submitting the form. Please try again later."+e.getMessage());
+        }
+
         return "redirect:/index";
     }
 }
