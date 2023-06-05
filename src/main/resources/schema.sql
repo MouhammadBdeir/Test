@@ -38,5 +38,5 @@ create table IF NOT EXISTS customer(
     anrede varchar(100) not null,
     email varchar(255) not null,
     phoneNumber number not null,
-    message text not null,
+    message text not null
     );
