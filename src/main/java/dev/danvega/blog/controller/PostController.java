@@ -121,7 +121,9 @@ public class PostController {
             System.out.println("pushed");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while submitting the form. Please try again later.");
-            System.out.println("not pushed");
+            System.out.println("not pushed" );
+            e.printStackTrace();
+            System.out.println("Exception: " + e.getMessage());
         }
 
         return "redirect:/index";
@@ -134,7 +136,9 @@ public class PostController {
             System.out.println("pushed");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while submitting the form. Please try again later."+e.getMessage());
-            System.out.println("not pushed");
+            System.out.println("not pushed" );
+            e.printStackTrace();
+            System.out.println("Exception: " + e.getMessage());
         }
 
         return "redirect:/index";
