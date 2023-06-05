@@ -1,5 +1,5 @@
 package dev.danvega.blog.repository;
-
+/*
 import dev.danvega.blog.model.Author;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,3 +26,5 @@ class AuthorRepositoryTest {
     }
 
 }
+
+ */

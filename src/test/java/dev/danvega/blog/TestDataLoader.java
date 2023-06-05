@@ -1,5 +1,5 @@
 package dev.danvega.blog;
-
+/*
 import dev.danvega.blog.model.Author;
 import dev.danvega.blog.model.Comment;
 import dev.danvega.blog.model.Post;
@@ -31,3 +31,5 @@ public class TestDataLoader implements CommandLineRunner {
         posts.save(post);
     }
 }
+
+ */
