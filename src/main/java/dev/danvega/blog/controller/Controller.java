@@ -1,10 +1,11 @@
 package dev.danvega.blog.controller;
 
+
 import dev.danvega.blog.model.Customer;
 import dev.danvega.blog.model.Feedback;
 import dev.danvega.blog.service.CustomerService;
 import dev.danvega.blog.service.FeedbackService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -12,19 +13,24 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @org.springframework.stereotype.Controller
-@RequestMapping("/")
 public class Controller {
 
 
-    private final  CustomerService customerService ;
+
+    private final CustomerService customerService ;
 
     private final FeedbackService feedbackService;
-    @Autowired
-    public Controller(FeedbackService feedbackService, CustomerService customerService) {
+
+
+
+    public Controller(  FeedbackService feedbackService, CustomerService customerService) {
         this.customerService=customerService;
         this.feedbackService=feedbackService;
 
     }
+
+
+
     @GetMapping("/index")
     public String showForm(Model model) {
         System.out.println("showForm sucess ");
@@ -95,17 +101,17 @@ public class Controller {
         System.out.println("showTest sucess");
         return "test";
     }
-    @GetMapping("/customer-list")
+    @GetMapping("api/v/admin/customer-list")
+    @PreAuthorize("hasRole('ADMIN')")
     public String showCustomerList(Model model) {
-
         List<Feedback> feedbacks = feedbackService.getAllFeedbacks();
-        List<Customer> custumers = customerService.getAllCustomers();
+        List<Customer> customers = customerService.getAllCustomers();
         model.addAttribute("feedbacks", feedbacks);
-        model.addAttribute("custumers", custumers);
-        System.out.println("showProjects sucess ");
+        model.addAttribute("customers", customers);
+        System.out.println("showCustomerList success");
         return "customer-list";
-
     }
+
     @PostMapping("/submit-form")
     public String submitContactForm(@ModelAttribute Customer customer, RedirectAttributes redirectAttributes) {
         try {
@@ -132,5 +138,9 @@ public class Controller {
         }
         return "redirect:/index";
     }
+
+
+
+
 
 }

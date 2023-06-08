@@ -3,9 +3,7 @@ package dev.danvega.blog.service;
 import java.util.List;
 
 import dev.danvega.blog.model.Customer;
-import dev.danvega.blog.model.Feedback;
 import dev.danvega.blog.repository.CustomerRepository;
-import dev.danvega.blog.repository.FeedbackRepository;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

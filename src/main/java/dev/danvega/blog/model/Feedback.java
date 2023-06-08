@@ -1,4 +1,5 @@
 package dev.danvega.blog.model;
+
 import javax.persistence.*;
 
 @Entity
