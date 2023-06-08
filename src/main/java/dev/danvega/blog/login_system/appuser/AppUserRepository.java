@@ -1,5 +1,5 @@
 package dev.danvega.blog.login_system.appuser;
-
+/*
 
 import dev.danvega.blog.login_system.appuser.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -24,3 +24,5 @@ public interface AppUserRepository
     int enableAppUser(String email);
 
 }
+
+ */

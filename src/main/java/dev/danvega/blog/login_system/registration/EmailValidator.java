@@ -1,5 +1,5 @@
 package dev.danvega.blog.login_system.registration;
-
+/*
 
 import org.springframework.stereotype.Service;
 
@@ -13,3 +13,5 @@ public class EmailValidator implements Predicate<String> {
         return true;
     }
 }
+
+ */

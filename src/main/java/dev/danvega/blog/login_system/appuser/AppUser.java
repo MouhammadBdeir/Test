@@ -1,6 +1,6 @@
 package dev.danvega.blog.login_system.appuser;
 
-
+/*
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -123,3 +123,5 @@ public class AppUser implements UserDetails {
         return enabled;
     }
 }
+
+ */

@@ -1,6 +1,6 @@
 package dev.danvega.blog.login_system.registration;
 
-
+/*
 import lombok.*;
 
 @Getter
@@ -17,3 +17,6 @@ public class RegistrationRequest {
 
     // Konstruktor, Getter und andere Methoden
 }
+
+
+ */
