@@ -20,6 +20,12 @@ spring:
   main:
     allow-circular-references: true
 
+  security:
+    user:
+      name: myusername
+      password: mypassword
+      email: myemail@example.com
+
   datasource:
     url: jdbc:postgresql://containers-us-west-103.railway.app:7525/railway
     username: postgres
