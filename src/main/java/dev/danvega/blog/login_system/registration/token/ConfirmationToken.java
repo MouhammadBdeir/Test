@@ -1,6 +1,6 @@
 package dev.danvega.blog.login_system.registration.token;
 
-
+/*
 import dev.danvega.blog.login_system.appuser.AppUser;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -55,3 +55,5 @@ public class ConfirmationToken {
         this.appUser = appUser;
     }
 }
+
+ */

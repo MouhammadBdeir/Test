@@ -2,7 +2,7 @@ package dev.danvega.blog.login_system.registration;
 
 
 
-
+/*
 import dev.danvega.blog.login_system.appuser.AppUser;
 import dev.danvega.blog.login_system.appuser.AppUserRole;
 import dev.danvega.blog.login_system.appuser.AppUserService;
@@ -209,3 +209,5 @@ public class RegistrationService {
                 "    </p>\n";
     }
 }
+
+ */

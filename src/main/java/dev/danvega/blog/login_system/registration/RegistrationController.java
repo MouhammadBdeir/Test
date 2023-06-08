@@ -1,5 +1,5 @@
 package dev.danvega.blog.login_system.registration;
-
+/*
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,4 +24,4 @@ public class RegistrationController {
         return registrationService.confirmToken(token);
     }
 
-}
+}*/

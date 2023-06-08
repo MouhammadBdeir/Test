@@ -1,6 +1,6 @@
 package dev.danvega.blog.login_system.registration.token;
 
-
+/*
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -25,3 +25,5 @@ public interface ConfirmationTokenRepository
     int updateConfirmedAt(String token,
                           LocalDateTime confirmedAt);
 }
+
+ */

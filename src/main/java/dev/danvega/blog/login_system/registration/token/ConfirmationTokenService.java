@@ -1,5 +1,5 @@
 package dev.danvega.blog.login_system.registration.token;
-
+/*
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,3 +25,5 @@ public class ConfirmationTokenService {
                 token, LocalDateTime.now());
     }
 }
+
+ */

@@ -1,5 +1,5 @@
 package dev.danvega.blog.login_system.security.config.email;
-
+/*
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,3 +39,5 @@ public class EmailService implements EmailSender{
         }
     }
 }
+
+ */
