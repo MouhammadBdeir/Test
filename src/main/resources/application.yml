@@ -1,3 +1,4 @@
+
 management:
   endpoints:
     web:
@@ -6,45 +7,21 @@ management:
   info:
     env:
       enabled: true
-
 info:
   application:
     name: spring-blog
     description: A blog with articles about The Spring Framework.
     author: Dan Vega
     version: '@project.version@'
-
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
 spring:
   profiles:
     active: dev
   main:
     allow-circular-references: true
-
-  security:
-    user:
-      name: myusername
-      password: mypassword
-      email: myemail@example.com
-
-  datasource:
-    url: jdbc:postgresql://containers-us-west-103.railway.app:7525/railway
-    username: postgres
-    password: UF2sP62678xnpVN0BL3S
-    name: spring-blog
-
-  sql:
-    init:
-      mode: always
-
-  server:
-    error:
-      include-message: always
-      include-binding-errors: always
-
-  thymeleaf:
-    prefix: classpath:/templates/
-    suffix: .html
-    cache: false
 
   jpa:
     hibernate:
@@ -60,21 +37,26 @@ spring:
       enabled: true
       max-file-size: 10MB
       max-request-size: 10MB
+security:
+  user:
+    name: myusername
+    password: mypassword
+    email: myemail@example.com
 
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: vairussyr97@gmail.com
-    password: jopyuautblsbzzta
-    properties:
-      mail:
-        smtp:
-          ssl:
-            trust: "*"
-          auth: true
-          starttls:
-            enable: true
+    mail:
+      host: smtp.gmail.com
+      port: 587
+      username: vairussyr97@gmail.com
+      password: jopyuautblsbzzta
+      properties:
+        mail:
+          smtp:
+            ssl:
+              trust: "*"
             auth: true
-          connectiontimeout: 5000
-          timeout: 3000
-          writetimeout: 5000
+            starttls:
+              enable: true
+              auth: true
+            connectiontimeout: 5000
+            timeout: 3000
+            writetimeout: 5000
