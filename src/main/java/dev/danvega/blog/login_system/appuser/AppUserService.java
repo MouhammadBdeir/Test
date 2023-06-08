@@ -1,7 +1,7 @@
 package dev.danvega.blog.login_system.appuser;
 
 
-
+/*
 import dev.danvega.blog.login_system.appuser.AppUser;
 import dev.danvega.blog.login_system.appuser.AppUserRepository;
 import dev.danvega.blog.login_system.registration.token.ConfirmationToken;
@@ -77,3 +77,5 @@ public class AppUserService implements UserDetailsService {
         return appUserRepository.enableAppUser(email);
     }
 }
+
+ */
