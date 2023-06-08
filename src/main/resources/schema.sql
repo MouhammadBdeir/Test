@@ -11,13 +11,7 @@ CREATE TABLE IF NOT EXISTS customer (
     );
 
 CREATE TABLE IF NOT EXISTS feedback (
-    id SERIAL PRIMARY KEY,
-    message VARCHAR(1000),
-    subject VARCHAR(255) NOT NULL DEFAULT ''
-    );
-
-CREATE TABLE IF NOT EXISTS users (
-     id SERIAL PRIMARY KEY,
-     username VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(100) NOT NULL
-    );
+                          id SERIAL PRIMARY KEY,
+                          message VARCHAR(1000),
+                          subject VARCHAR(255) NOT NULL
+);
